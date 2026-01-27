@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>📻 Mayster's Time</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="MTLogo.png" type="image/x-icon">
+  
   <style>
     body {
       background: #111;
@@ -15,12 +17,54 @@
     h1 { font-size: 2.2em; }
     p { opacity: 0.8; }
     audio { width: 100%; max-width: 400px; margin-top: 20px; }
+    .header {
+    color: white;
+    height: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+    .header .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    font-weight: 500;
+    font-family: courier !important;
+}
+    .header .logo {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #441057;
+    }
+    .main {
+    flex: 1; /* TO JEST KLUCZ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+}
+    .footer {
+    background: #6a1b9a; /* ten sam fiolet */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 10px;
+}
   </style>
+  
 </head>
 <body>
+  
+<div class="header">
+    <img src="MTLogo.png" class="logo">
+    <div class="title">📻 Mayster's Time</div>
+</div>
 
-  <h1>📻 Mayster's Time</h1>
-  <p>Tune in and let us turn your day upside down!</p>
+<div class="main">
+      <p>Tune in and let us turn your day upside down!</p>
 
   <a href="https://radio.free-shoutcast.com/site/88860" target="_blank"
    style="display:inline-block;padding:15px 25px;
@@ -29,7 +73,14 @@
 ▶️ Słuchaj radia
 </a>
 
-  <p>27.01.2026<br>15:00 - 16:00</p>
+  <p>15:00 - 16:00</p>
+</div>
+
+<div class="footer">
+    © 2026 Wiktor Uścinowicz
+</div>
+
+
 
 </body>
 </html>
