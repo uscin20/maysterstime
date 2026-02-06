@@ -88,3 +88,21 @@
     padding: 10px;
     font-size: 10px;
 }
+.link-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.link-box input {
+  flex: 1;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.link-box button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
