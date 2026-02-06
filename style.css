@@ -1,4 +1,4 @@
-    .accordion {
+.accordion {
     background-color: #f1f1f1;
     color: #333;
     cursor: pointer;
@@ -14,23 +14,23 @@
     align-items: center;
   }
 
-  .accordion:hover {
+.accordion:hover {
     background-color: #ddd;
   }
 
-  .accordion.active {
+.accordion.active {
     background-color: #ccc;
   }
 
   /* Strzałka po prawej stronie */
-  .accordion::after {
+.accordion::after {
     content: "▶"; /* unicode strzałki */
     font-size: 16px;
     transition: transform 0.3s;
   }
 
   /* Obrót strzałki po kliknięciu */
-  .accordion.active::after {
+.accordion.active::after {
     transform: rotate(90deg);
   }
 
@@ -43,10 +43,10 @@
   display: none;
 }
 
-  .panel p {
+.panel p {
     margin: 10px 0;
   }
-    body {
+body {
       background: #111;
       color: #fff;
       font-family: Arial, sans-serif;
@@ -56,15 +56,15 @@
       flex-direction: column;
       margin: 0;
     min-height: 100dvh;
-    }
+}
 
-    h1 { font-size: 2.2em; }
+h1 { font-size: 2.2em; }
 
-    p { opacity: 0.8; }
+p { opacity: 0.8; }
 
-    audio { width: 100%; max-width: 400px; margin-top: 20px; }
+audio { width: 100%; max-width: 400px; margin-top: 20px; }
 
-    .header {
+.header {
     color: white;
     height: 30px;
     position: relative;
@@ -72,7 +72,7 @@
     align-items: center;
     padding: 0 20px;
 }
-    .header .title {
+.header .title {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -81,13 +81,14 @@
     font-family: courier !important;
 }
 .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
 }
-    .footer {
+.footer {
     color: white;
     text-align: center;
     padding: 10px;
