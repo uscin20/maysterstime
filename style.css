@@ -36,11 +36,15 @@
 
   .panel {
     width: 100%;
+    max-width: 600px;
     display: none;
     background-color: white;
     overflow: hidden;
     color: black;
-  }
+    text-align: left;
+    padding: 10px 20px;
+    align-self: stretch;
+}
 
   .panel p {
     margin: 10px 0;
@@ -100,6 +104,10 @@
   flex: 1;
   padding: 5px 10px;
   font-size: 14px;
+  color: black;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .link-box button {
