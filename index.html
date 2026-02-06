@@ -5,54 +5,7 @@
   <title>📻 Mayster's Time</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="MTLogo.png" type="image/x-icon">
-  
-  <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-    min-height: 100dvh;
-    }
-    h1 { font-size: 2.2em; }
-    p { opacity: 0.8; }
-    audio { width: 100%; max-width: 400px; margin-top: 20px; }
-    .header {
-    color: white;
-    height: 30px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-}
-    .header .title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 25px;
-    font-weight: bold !important;
-    font-family: courier !important;
-}
-    .main {
-    flex: 1; /* TO JEST KLUCZ */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    flex-direction: column;
-}
-    .footer {
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 10px;
-}
-  </style>
-  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   
@@ -73,6 +26,51 @@
 
   <p></p>
   <!-- link do vlc:  https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25  -->
+<button class="accordion">Jak słuchać na telefonie w tle?</button>
+<div class="panel">
+  <h4>Otto instrukcja w kilku prostych krokach:</h4>
+  <ol>
+    <li>Pobierz aplikację VLC.</li>
+    <li>Przejdź do "Więcej".</li>
+    <li>Kliknij przycisk "Nowy strumień".</li>
+    <li>Wklej poniższy link.</li>
+    <div class="link-box">
+  <input type="text" id="myLink" value="https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25" readonly>
+  <button onclick="copyLink()">Kopiuj</button>
+</div>
+    <li>Kliknij strzałkę lub enter by zakończyć.</li>
+    <p>Pamiętaj żeby dodać nazwę stacji</p>
+    <li>Wyjdź z widoku odtwarzacza.</li>
+    <li>Kliknij trzy kropki przy ikonce stacji.</li>
+    <li>Kliknij "Zmień nazwę".</li>
+    <li>Wpisz nazwę podaną na stronie lub inną wedle swoich preferencji, żebyś potem rozpoznał(a).</li>
+  </ol>
+</div>
+  <script>
+function copyLink() {
+  const linkInput = document.getElementById("myLink");
+  linkInput.select();
+  linkInput.setSelectionRange(0, 99999); // dla urządzeń mobilnych
+  navigator.clipboard.writeText(linkInput.value)
+    .then(() => alert("Link skopiowany!"))
+    .catch(err => alert("Błąd przy kopiowaniu"));
+}
+</script>
+  <script>
+  const accordions = document.querySelectorAll(".accordion");
+
+  accordions.forEach(button => {
+    button.addEventListener("click", () => {
+      button.classList.toggle("active");
+      const panel = button.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  });
+</script>
 </div>
 
 <div class="footer">
