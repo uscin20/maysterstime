@@ -4,6 +4,8 @@
     cursor: pointer;
     padding: 15px;
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     border: none;
     text-align: left;
     outline: none;
@@ -12,18 +14,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-.panel, .accordion {
-  max-width: 600px;
-  margin: 10px auto;
+    box-sizing: border-box;
 }
+
 .panel {
-  background-color: white;
-  color: black;
-  text-align: left;
-  padding: 10px 20px;
-  display: none;
+    background-color: white;
+    color: black;
+    text-align: left;
+    padding: 10px 20px;
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
+
 .accordion:hover {
     background-color: #ddd;
   }
