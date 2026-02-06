@@ -85,7 +85,6 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    align-items: stretch;
 }
     .footer {
     color: white;
