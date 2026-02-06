@@ -27,24 +27,24 @@
   <p>       </p>
   <!-- link do vlc:  https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25  -->
 <div class="instrukcje">
-<h2>Jak słuchać na telefonie w tle?</h2>
-  <h4>Oto instrukcja w kilku prostych krokach:</h4>
-  <ol>
-    <li>Pobierz aplikację VLC.</li>
-    <li>Przejdź do "Więcej".</li>
-    <li>Kliknij przycisk "Nowy strumień".</li>
-    <li>Wklej poniższy link.</li>
+  <h2>Jak słuchać na telefonie w tle?</h2>
+    <h4>Oto instrukcja w kilku prostych krokach:</h4>
+    <ol>
+      <li>Pobierz aplikację VLC.</li>
+      <li>Przejdź do "Więcej".</li>
+      <li>Kliknij przycisk "Nowy strumień".</li>
+      <li>Wklej poniższy link.</li>
     <div class="link-box">
-  <input type="text" id="myLink" value="https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25" readonly>
-  <button onclick="copyLink()">Kopiuj</button>
-</div>
-    <li>Kliknij strzałkę lub enter by zakończyć.</li>
-    <p>Pamiętaj żeby dodać nazwę stacji</p>
-    <li>Wyjdź z widoku odtwarzacza.</li>
-    <li>Kliknij trzy kropki przy ikonce stacji.</li>
-    <li>Kliknij "Zmień nazwę".</li>
-    <li>Wpisz nazwę podaną na stronie lub inną wedle swoich preferencji, żebyś potem rozpoznał(a).</li>
-  </ol>
+      <input type="text" id="myLink" value="https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25" readonly>
+      <button onclick="copyLink()">Kopiuj</button>
+    </div>
+      <li>Kliknij strzałkę lub enter by zakończyć.</li>
+      <p>Pamiętaj żeby dodać nazwę stacji</p>
+      <li>Wyjdź z widoku odtwarzacza.</li>
+      <li>Kliknij trzy kropki przy ikonce stacji.</li>
+      <li>Kliknij "Zmień nazwę".</li>
+      <li>Wpisz nazwę podaną na stronie lub inną wedle swoich preferencji, żebyś potem rozpoznał(a).</li>
+    </ol>
   <script>
 function copyLink() {
   const linkInput = document.getElementById("myLink");
@@ -53,8 +53,8 @@ function copyLink() {
   navigator.clipboard.writeText(linkInput.value)
     .then(() => alert("Link skopiowany!"))
     .catch(err => alert("Błąd przy kopiowaniu"));
-}
-</script>
+  }
+  </script>
 </div>
   
 </div>
