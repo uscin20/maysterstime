@@ -69,10 +69,10 @@ audio { width: 100%; max-width: 400px; margin-top: 20px; }
   cursor: pointer;
 }
 .instrukcje {
-      border: 10px solid gray;
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      background-color: black;
-      color: white;
+    background-color: black !important;
+    color: white;
+    border: 10px solid gray;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
 }
