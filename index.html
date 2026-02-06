@@ -24,10 +24,9 @@
 ▶️ Słuchaj radia
 </a>
 
-  <p></p>
+  <p>       </p>
   <!-- link do vlc:  https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25  -->
-<button class="accordion">Jak słuchać na telefonie w tle?</button>
-<div class="panel">
+<h2>Jak słuchać na telefonie w tle?</h2>
   <h4>Oto instrukcja w kilku prostych krokach:</h4>
   <ol>
     <li>Pobierz aplikację VLC.</li>
@@ -45,34 +44,18 @@
     <li>Kliknij "Zmień nazwę".</li>
     <li>Wpisz nazwę podaną na stronie lub inną wedle swoich preferencji, żebyś potem rozpoznał(a).</li>
   </ol>
-</div>
   <script>
 function copyLink() {
   const linkInput = document.getElementById("myLink");
   linkInput.select();
-  linkInput.setSelectionRange(0, 99999); // dla urządzeń mobilnych
+  linkInput.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(linkInput.value)
     .then(() => alert("Link skopiowany!"))
     .catch(err => alert("Błąd przy kopiowaniu"));
 }
 </script>
-  <script>
-  const accordions = document.querySelectorAll(".accordion");
-
-  accordions.forEach(button => {
-    button.addEventListener("click", () => {
-      button.classList.toggle("active");
-      const panel = button.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  });
-</script>
+  
 </div>
-
 <div class="footer">
     © 2026 Wiktor Uścinowicz
 </div>
