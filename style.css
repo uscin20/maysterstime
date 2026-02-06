@@ -35,10 +35,11 @@
   }
 
   .panel {
-    padding: 0 15px;
+    width: 100%;
     display: none;
     background-color: white;
     overflow: hidden;
+    color: black;
   }
 
   .panel p {
