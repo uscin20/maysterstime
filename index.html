@@ -17,7 +17,7 @@
       <span id="now-playing-text">Ładowanie informacji o utworze...</span>
     </div>
   </div>
-  <script>
+ <script>
 const server = "http://s1.free-shoutcast.com:18024/7.html";
 const proxy = "https://api.allorigins.win/raw?url=";
 
@@ -28,19 +28,17 @@ async function fetchNowPlaying() {
     );
     const text = await response.text();
 
-    // usuwamy znaczniki HTML
-    const cleanText = text.replace(/<[^>]*>?/gm, "");
+    // wyciągamy tylko zawartość <body>
+    const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    if (!bodyMatch) throw new Error("Brak danych");
+
+    const cleanText = bodyMatch[1].trim();
     const parts = cleanText.split(",");
 
     const song = parts[6]?.trim();
 
-    if (song && song !== "") {
-      document.getElementById("now-playing-text").innerText =
-        "TERAZ LECI: " + song;
-    } else {
-      document.getElementById("now-playing-text").innerText =
-        "Radio online";
-    }
+    document.getElementById("now-playing-text").innerText =
+      song ? "🔴 TERAZ LECI: " + song;
 
   } catch (error) {
     document.getElementById("now-playing-text").innerText =
@@ -51,6 +49,7 @@ async function fetchNowPlaying() {
 fetchNowPlaying();
 setInterval(fetchNowPlaying, 10000);
 </script>
+
 
 </div>
 
