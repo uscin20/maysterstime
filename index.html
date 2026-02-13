@@ -34,14 +34,14 @@ async function fetchNowPlaying() {
 
     if (song && song !== "") {
       document.getElementById("now-playing-text").innerText =
-        "🔴 TERAZ LECI: " + song;
+        "TERAZ LECI: " + song;
     } else {
       document.getElementById("now-playing-text").innerText =
-        "🔴 Radio online";
+        "Radio online";
     }
   } catch (error) {
     document.getElementById("now-playing-text").innerText =
-      "🔴 e";
+      " e";
   }
 }
 
