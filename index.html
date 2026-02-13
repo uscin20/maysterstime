@@ -24,13 +24,15 @@ const proxy = "https://api.allorigins.win/raw?url=";
 async function fetchNowPlaying() {
   try {
     const response = await fetch(
-      proxy + encodeURIComponent(server)
+      proxy + encodeURIComponent(server) + "&t=" + new Date().getTime()
     );
     const text = await response.text();
-    const parts = text.split(",");
-    
-    // W SHOUTcast v1 tytuł jest w 7 pozycji (index 6)
-    const song = parts[6];
+
+    // usuwamy znaczniki HTML
+    const cleanText = text.replace(/<[^>]*>?/gm, "");
+    const parts = cleanText.split(",");
+
+    const song = parts[6]?.trim();
 
     if (song && song !== "") {
       document.getElementById("now-playing-text").innerText =
@@ -39,9 +41,10 @@ async function fetchNowPlaying() {
       document.getElementById("now-playing-text").innerText =
         "Radio online";
     }
+
   } catch (error) {
     document.getElementById("now-playing-text").innerText =
-      " e";
+      "e";
   }
 }
 
