@@ -60,12 +60,11 @@ async function fetchNowPlaying() {
 
     document.getElementById("now-playing-text").innerText =
       song && song !== ""
-        ? "TERAZ LECI: " + song
-        : "Radio online";
+        ? "TERAZ LECI: " + song;
 
   } catch (error) {
     document.getElementById("now-playing-text").innerText =
-      "Radio online";
+      "e";
   }
 }
 
