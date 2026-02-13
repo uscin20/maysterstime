@@ -35,42 +35,48 @@
   100% { opacity: 1; }
 }
 
-/* odsunięcie treści strony */
 body {
   margin-top: 45px;
 }
 </style>
 
+
 <script>
-const server = "http://s1.free-shoutcast.com:18024/7.html";
-const proxy = "https://api.allorigins.win/raw?url=";
+document.addEventListener("DOMContentLoaded", function() {
 
-async function fetchNowPlaying() {
-  try {
-    const response = await fetch(
-      proxy + encodeURIComponent(server) + "&t=" + new Date().getTime()
-    );
-    const text = await response.text();
+  const server = "http://s1.free-shoutcast.com:18024/7.html";
+  const proxy = "https://api.allorigins.win/raw?url=";
+  const titleElement = document.getElementById("now-playing-text");
 
-    const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-    if (!bodyMatch) throw new Error("Brak danych");
+  async function fetchNowPlaying() {
+    try {
+      const response = await fetch(
+        proxy + encodeURIComponent(server) + "&t=" + new Date().getTime()
+      );
+      const text = await response.text();
 
-    const parts = bodyMatch[1].split(",");
-    const song = parts[6]?.trim();
+      const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      if (!bodyMatch) return;
 
-    document.getElementById("now-playing-text").innerText =
-      song && song !== ""
-        ? "TERAZ LECI: " + song;
+      const parts = bodyMatch[1].split(",");
+      const song = parts[6]?.trim();
 
-  } catch (error) {
-    document.getElementById("now-playing-text").innerText =
-      "e";
+      if (song && song !== "") {
+        titleElement.innerText = "TERAZ LECI: " + song;
+      }
+      // jeśli pusty, nic nie zmieniamy — zostaje ostatni tytuł
+
+    } catch (error) {
+      titleElement.innerText = "E";
+    }
   }
-}
 
-fetchNowPlaying();
-setInterval(fetchNowPlaying, 10000);
+  fetchNowPlaying();
+  setInterval(fetchNowPlaying, 10000);
+
+});
 </script>
+
 
 
 <div id="radio-bar">
@@ -79,3 +85,4 @@ setInterval(fetchNowPlaying, 10000);
     <span id="now-playing-text">Ładowanie informacji o utworze...</span>
   </div>
 </div>
+
