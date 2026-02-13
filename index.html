@@ -10,7 +10,41 @@
 <body>
   
 <div class="header">
-    <div class="title"></div>
+      <div class="title"></div>
+    <div id="radio-bar">
+    <div class="radio-content">
+      <span class="live-dot"></span>
+      <span id="now-playing-text">Ładowanie informacji o utworze...</span>
+    </div>
+  </div>
+  <script>
+const server = "http://s1.free-shoutcast.com:18024/";
+const streamId = 1;
+const proxy = "https://api.allorigins.win/raw?url=";
+
+async function fetchNowPlaying() {
+  try {
+    const response = await fetch(
+      proxy + encodeURIComponent(`${server}/stats?sid=${streamId}&json=1`)
+    );
+    const data = await response.json();
+
+    if (data.songtitle) {
+      document.getElementById("now-playing-text").innerText =
+        "🔴 TERAZ LECI: " + data.songtitle;
+    } else {
+      document.getElementById("now-playing-text").innerText =
+        "🔴 Radio online";
+    }
+  } catch (error) {
+    document.getElementById("now-playing-text").innerText =
+      "";
+  }
+}
+
+fetchNowPlaying();
+setInterval(fetchNowPlaying, 10000);
+</script>
 </div>
 
 <div class="main">
