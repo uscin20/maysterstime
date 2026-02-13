@@ -18,33 +18,37 @@
     </div>
   </div>
   <script>
-const server = "https://s1.free-shoutcast.com/stream/18024/;stream.mp3?d43e68";
-const streamId = 1;
+const server = "http://s1.free-shoutcast.com:18024/7.html";
 const proxy = "https://api.allorigins.win/raw?url=";
 
 async function fetchNowPlaying() {
   try {
     const response = await fetch(
-      proxy + encodeURIComponent(`${server}/stats?sid=${streamId}&json=1`)
+      proxy + encodeURIComponent(server)
     );
-    const data = await response.json();
+    const text = await response.text();
+    const parts = text.split(",");
+    
+    // W SHOUTcast v1 tytuł jest w 7 pozycji (index 6)
+    const song = parts[6];
 
-    if (data.songtitle) {
+    if (song && song !== "") {
       document.getElementById("now-playing-text").innerText =
-        "🔴 TERAZ LECI: " + data.songtitle;
+        "🔴 TERAZ LECI: " + song;
     } else {
       document.getElementById("now-playing-text").innerText =
         "🔴 Radio online";
     }
   } catch (error) {
     document.getElementById("now-playing-text").innerText =
-      "";
+      "🔴 e";
   }
 }
 
 fetchNowPlaying();
 setInterval(fetchNowPlaying, 10000);
 </script>
+
 </div>
 
 <div class="main">
