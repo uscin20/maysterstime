@@ -1,55 +1,82 @@
-<div class="bottomline">
-            <p id="songTitle"></p>
-        </div> 
-        <script type="text/javascript">
-            var _paq = _paq || [];
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function () {
-                var u = (("https:" == document.location.protocol) ? "https" : "http") + "://stat.krolnet.pl/";
-                _paq.push(['setTrackerUrl', u + 'piwik.php']);
-                _paq.push(['setSiteId', 7]);
-                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-                g.type = 'text/javascript';
-                g.defer = true;
-                g.async = true;
-                g.src = u + 'piwik.js';
-                s.parentNode.insertBefore(g, s);
-            })();
-
-            function refreshSong(serverId)
-            {
-
-                $.get('/response.php?id=' + serverId + '&q=song', function (data) {
-                    var song = data.toString().toLowerCase();
-                    if (song !== '')
-                        song = 'piosenka: ' + song;
-                    else
-                        song = '&copy; <a href="https://free-shoutcast.com/">Free-Shoutcast.com</a>';
-
-                    $("#songTitle").html(song);
-                });
-            }
-        </script>
 <style>
-            .bottomline {
-	height: 30px;
-	border-top: 2px solid #c3a146; 
-	background: #475258;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-
-	color: white;
-	font-size: 9pt;
-	font-variant: small-caps;
-	font-weight: 700;
-	text-shadow: 3px 3px 3px #182019;
-
-	text-align: center;
+#radio-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #111, #222);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 9999;
+  padding: 10px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-.bottomline p {
-	margin-top: 5px;
+.radio-content {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #ff2b2b;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* odsunięcie treści strony */
+body {
+  margin-top: 45px;
 }
 </style>
+
+<script>
+const server = "http://s1.free-shoutcast.com:18024/7.html";
+const proxy = "https://api.allorigins.win/raw?url=";
+
+async function fetchNowPlaying() {
+  try {
+    const response = await fetch(
+      proxy + encodeURIComponent(server) + "&t=" + new Date().getTime()
+    );
+    const text = await response.text();
+
+    const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    if (!bodyMatch) throw new Error("Brak danych");
+
+    const parts = bodyMatch[1].split(",");
+    const song = parts[6]?.trim();
+
+    document.getElementById("now-playing-text").innerText =
+      song && song !== ""
+        ? "TERAZ LECI: " + song
+        : "Radio online";
+
+  } catch (error) {
+    document.getElementById("now-playing-text").innerText =
+      "Radio online";
+  }
+}
+
+fetchNowPlaying();
+setInterval(fetchNowPlaying, 10000);
+</script>
+
+
+<div id="radio-bar">
+  <div class="radio-content">
+    <span class="live-dot"></span>
+    <span id="now-playing-text">Ładowanie informacji o utworze...</span>
+  </div>
+</div>
