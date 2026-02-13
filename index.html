@@ -74,7 +74,6 @@ setInterval(fetchNowPlaying, 10000);
       <li>Wklej poniższy link.</li>
     <div class="link-box">
       <input type="text" id="myLink" value="https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25" readonly>
-      <button onclick="copyLink()">Kopiuj</button>
     </div>
       <li>Kliknij strzałkę lub enter by zakończyć.</li>
       <p>Pamiętaj żeby dodać nazwę stacji</p>
@@ -83,16 +82,6 @@ setInterval(fetchNowPlaying, 10000);
       <li>Kliknij "Zmień nazwę".</li>
       <li>Wpisz nazwę podaną na stronie lub inną wedle swoich preferencji, żebyś potem rozpoznał(a).</li>
     </ol>
-  <script>
-function copyLink() {
-  const linkInput = document.getElementById("myLink");
-  linkInput.select();
-  linkInput.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(linkInput.value)
-    .then(() => alert("Link skopiowany!"))
-    .catch(err => alert("Błąd przy kopiowaniu"));
-  }
-  </script>
 </div>
   
 </div>
