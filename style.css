@@ -111,3 +111,8 @@ audio { width: 100%; max-width: 400px; margin-top: 20px; }
   50% { opacity: 0.3; }
   100% { opacity: 1; }
 }
+
+li {
+margin-top: 10px;
+margin-bottom: 10px;
+}
