@@ -58,18 +58,17 @@ document.addEventListener("DOMContentLoaded", function() {
       if (song && song !== "") {
         titleElement.innerText = "TERAZ LECI: " + song;
       }
-      // jeśli pusty, nic nie zmieniamy
-
     } catch (error) {
-      // jeśli błąd, nic nie zmieniamy
+      // nic nie zmieniamy
     }
   }
 
   fetchNowPlaying();
-  setInterval(fetchNowPlaying, 10000);
+  setInterval(fetchNowPlaying, 3000); // odpytywanie co 3 sekundy
 
 });
 </script>
+
 
 
 
