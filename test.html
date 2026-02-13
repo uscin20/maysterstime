@@ -16,4 +16,18 @@
                 g.src = u + 'piwik.js';
                 s.parentNode.insertBefore(g, s);
             })();
+
+            function refreshSong(serverId)
+            {
+
+                $.get('/response.php?id=' + serverId + '&q=song', function (data) {
+                    var song = data.toString().toLowerCase();
+                    if (song !== '')
+                        song = 'piosenka: ' + song;
+                    else
+                        song = '&copy; <a href="https://free-shoutcast.com/">Free-Shoutcast.com</a>';
+
+                    $("#songTitle").html(song);
+                });
+            }
         </script>
