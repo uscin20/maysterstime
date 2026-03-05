@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function() {
         titleElement.innerText = "TERAZ LECI: " + song;
       }
     } catch (error) {
-      // nic nie zmieniamy
+      
     }
   }
 
   fetchNowPlaying();
-  setInterval(fetchNowPlaying, 3000); // odpytywanie co 3 sekundy
+  setInterval(fetchNowPlaying, 2000); // odpytywanie co 3 sekundy
 
 });
 </script>
