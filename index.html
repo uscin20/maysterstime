@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function() {
         titleElement.innerText = "TERAZ LECI: " + song;
       }
     } catch (error) {
-      
+      titleElement.innerText = "TERAZ LECI: ";
     }
   }
 
   fetchNowPlaying();
-  setInterval(fetchNowPlaying, 2000); // odpytywanie co 3 sekundy
+  setInterval(fetchNowPlaying, 2000);
 
 });
 </script>
@@ -58,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
    border-radius:10px;font-size:18px;">
 ▶️ Słuchaj radia
 </a>
-
+<h1>Aktualności:</h1>
+  <ul>
+    <li>Premierowy odsłuch "</li>
+  </ul>
   <p>       </p>
   <!-- link do vlc:  https://s1.free-shoutcast.com/stream/18024/;stream.mp3?11bc25  -->
 <div class="instrukcje">
